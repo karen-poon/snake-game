@@ -1,15 +1,35 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <script src="sketch.js"></script>
     <script src="snake.js"></script>
     <script src="food.js"></script>
 
-    <button onclick="newGame()">Restart</button>
-    <button onclick="startGame()">Start Game</button>
+    <div class="scoreboard">
+        <div class="score">Score: 0</div>
+        <div class="highestScore">Highest Score: 0</div>
+    </div>
+
+    <div class="container">
+        <div class="gameName">🐍 The Snake Game</div>
+        <div id="sketch-div"></div>
+        <div class="button-list noselect">
+            <button onclick="newGame()" id="replay">
+                <i class="material-icons noselect">replay</i>
+            </button>
+            <button onclick="startGame()" id="play_arrow">
+                <i class="material-icons noselect">play_arrow</i>
+            </button>
+            <button onclick="pauseGame()" id="pause">
+                <i class="material-icons noselect">pause</i>
+            </button>
+        </div>
+    </div>
+
 
   </body>
 </html>

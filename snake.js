@@ -1,7 +1,7 @@
 function Snake() {
     this.head = createVector(60, 0);
-    this.xspeed = 1;
-    this.yspeed = 0;
+    this.xSpeed = 1;
+    this.ySpeed = 0;
     this.body = []; // body does not include the head
     this.len = 4; // length of body
 
@@ -18,27 +18,25 @@ function Snake() {
         for (let i = 0; i < this.len-1; i++) {
             this.body[i] = this.body[i+1];
         }
-        if (this.len > 0) {
-            this.body[this.len-1] = createVector(this.head.x, this.head.y);
-        }
+        this.body[this.len-1] = createVector(this.head.x, this.head.y);
 
         // move head
-        this.head.x += this.xspeed * SCALE;
-        this.head.y += this.yspeed * SCALE;
+        this.head.x += this.xSpeed * SCALE;
+        this.head.y += this.ySpeed * SCALE;
     }
 
     // increase body size after eating food
     this.grow = function() {
         this.body[this.len] = createVector(this.head.x, this.head.y);
-        this.head.x += this.xspeed * SCALE;
-        this.head.y += this.yspeed * SCALE;
+        this.head.x += this.xSpeed * SCALE;
+        this.head.y += this.ySpeed * SCALE;
         this.len++;
     }
 
     // change snake moving direction
     this.changeDir = function(xdir, ydir) {
-        this.xspeed = xdir;
-        this.yspeed = ydir;
+        this.xSpeed = xdir;
+        this.ySpeed = ydir;
     }
     
     // detects whether snake successfully eats a food
@@ -52,17 +50,18 @@ function Snake() {
     // print the snake
     this.print = function () {
         fill(255);
+        noStroke();
         for (let i = 0; i < this.len; i++) {
-            rect(this.body[i].x, this.body[i].y, SCALE, SCALE);
+            rect(this.body[i].x, this.body[i].y, SCALE, SCALE, 4);
         }
-        rect(this.head.x, this.head.y, SCALE, SCALE);
+        rect(this.head.x, this.head.y, SCALE, SCALE, 4);
     }
 
     // resets back to the beginning position
     this.reset = function () {
         this.head = createVector(60, 0);
-        this.xspeed = 1;
-        this.yspeed = 0;
+        this.xSpeed = 1;
+        this.ySpeed = 0;
         this.body = [];
         this.len = 4; // length of body
 
