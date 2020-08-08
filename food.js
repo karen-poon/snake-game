@@ -41,3 +41,8 @@ function printFood(food) {
     fill(255, 0, 100);
     ellipse(food.x+SCALE/2, food.y+SCALE/2, SCALE-2);
 }
+
+function printSpecialFood(food) {
+    fill(255, 255, 0);
+    ellipse(food.x+SCALE/2, food.y+SCALE/2, SCALE-2);
+}

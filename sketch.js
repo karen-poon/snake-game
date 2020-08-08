@@ -1,17 +1,21 @@
 const SCALE = 15;
 var Snake;
 var Food;
+var SpecialFood;
 var start = false;
 var score = 0;
 var highestScore = 0;
+var timer = 5;
 
 function setup() {
     background(0);
     createCanvas(450, 450).parent('sketch-div'); // put under sketch div in html
     frameRate(8);
+    
     Snake = new Snake();
     Food = makeValidFood(generateFood());
-    // Food = createVector(435, 0);
+    SpecialFood = makeValidFood(generateFood());
+    
     document.getElementById("pause").style.display = "none";
 }
 
@@ -19,7 +23,7 @@ function draw() {
     background(0);
 
     //draw food
-    printFood(Food);
+    printFood(Food); 
 
     // food detection has to come first
     // so that it works with my grow function
@@ -30,6 +34,32 @@ function draw() {
         // add 100 points for eating food 
         score += 100;
         document.getElementsByClassName("score")[0].innerText = "Score:" + " " + score;
+    }
+
+    // unlock special food once score reaches 1000
+    if (score > 1000) {
+        // draw special food
+        printSpecialFood(SpecialFood);
+
+        // countdown (do not countdown when paused or game is over)
+        if (frameCount % 10 == 0 && timer > 0 && start == true) {
+            timer--;
+        } 
+        // reset timer and regenerate special food position
+        if (frameCount % 10 == 0 && timer == 0) {
+            timer = 5; // reset timer
+            SpecialFood = makeValidFood(generateFood()); // reset position
+        }
+        // when snake eats the speical food
+        if (Snake.isEat(SpecialFood)) {
+            Snake.grow();
+            timer = 5; // reset timer
+            SpecialFood = makeValidFood(generateFood()); // reset position
+
+            // add 300 points for eating special food 
+            score += 300;
+            document.getElementsByClassName("score")[0].innerText = "Score:" + " " + score;
+        }
     }
     
     // snake moves one step forward automatically when game has started
@@ -61,6 +91,7 @@ function draw() {
     }
 }
 
+/************************ FUNCTIONS ************************/
 // function for button "Start Game"
 function startGame() {
     start = true;
@@ -84,6 +115,8 @@ function newGame() {
     
     Snake.reset();
     Food = makeValidFood(generateFood());
+    SpecialFood = makeValidFood(generateFood());
+    timer = 5; // reset timer
 
     score = 0; // reset score to 0
     document.getElementsByClassName("score")[0].innerText = "Score:" + " " + score;
@@ -118,11 +151,6 @@ function keyPressed() {
 
 // check for game over
 function isGameOver() {
-    // // when it's out of border
-    // if (Snake.head.x < 0 || Snake.head.y < 0 || Snake.head.x > width-SCALE || Snake.head.y > height-SCALE) {
-    //     return true;
-    // }
-
     // when it eats itself
     for (i = 0; i < Snake.body.length; i++) {
         if (Snake.head.equals(Snake.body[i])) {
