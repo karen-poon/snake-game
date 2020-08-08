@@ -12,17 +12,35 @@ function Snake() {
     this.body.push(createVector(45, 0));
 
     /************************ FUNCTIONS ************************/
+    // snake can loop through the canvas
+    // this function checks if snake body or head is out of bound
+    // and return a new poisition
+    this.checkOutOfBound = function(object) {
+        if (object.x >= width) {
+            object.x -= width;
+        } else if (object.x < 0) {
+            object.x += width;
+        } else if (object.y >= height) {
+            object.y -= height;
+        } else if (object.y < 0) {
+            object.y += height;
+        }
+        return object;
+    }
+    
     // snake travels automatically
     this.travel = function() {
         // move body
         for (let i = 0; i < this.len-1; i++) {
             this.body[i] = this.body[i+1];
+            this.body[i] = this.checkOutOfBound(this.body[i]);
         }
         this.body[this.len-1] = createVector(this.head.x, this.head.y);
-
+        
         // move head
         this.head.x += this.xSpeed * SCALE;
         this.head.y += this.ySpeed * SCALE;
+        this.head = this.checkOutOfBound(this.head);
     }
 
     // increase body size after eating food

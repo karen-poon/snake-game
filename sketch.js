@@ -5,8 +5,6 @@ var start = false;
 var score = 0;
 var highestScore = 0;
 
-var restart = createGraphics(400, 400);
-
 function setup() {
     background(0);
     createCanvas(450, 450).parent('sketch-div'); // put under sketch div in html
@@ -120,10 +118,10 @@ function keyPressed() {
 
 // check for game over
 function isGameOver() {
-    // when it's out of border
-    if (Snake.head.x < 0 || Snake.head.y < 0 || Snake.head.x > width-SCALE || Snake.head.y > height-SCALE) {
-        return true;
-    }
+    // // when it's out of border
+    // if (Snake.head.x < 0 || Snake.head.y < 0 || Snake.head.x > width-SCALE || Snake.head.y > height-SCALE) {
+    //     return true;
+    // }
 
     // when it eats itself
     for (i = 0; i < Snake.body.length; i++) {
