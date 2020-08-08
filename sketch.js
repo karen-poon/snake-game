@@ -38,6 +38,10 @@ function draw() {
 
     // unlock special food once score reaches 1000
     if (score > 1000) {
+        document.getElementsByTagName("canvas")[0].style.border = "solid 10px rgb(122, 173, 44)";
+        document.getElementById("sketch-div").style.padding = "0px";
+        document.getElementsByClassName("info")[0].innerHTML = "2nd Stage";
+
         // draw special food
         printSpecialFood(SpecialFood);
 
@@ -73,7 +77,7 @@ function draw() {
 
     // when you lose the game
     if (isGameOver()) {
-        console.log("GAME OVER");
+        document.getElementsByClassName("info")[0].innerHTML = "GAME OVER";
         start = false;
         document.getElementById("play_arrow").style.display = "inline-block";
         document.getElementById("play_arrow").disabled = true;
@@ -109,6 +113,7 @@ function pauseGame() {
 // function for button "Restart"
 function newGame() {
     start = false;
+
     document.getElementById("play_arrow").style.display = "inline-block";
     document.getElementById("play_arrow").disabled = false;
     document.getElementById("pause").style.display = "none";
@@ -116,10 +121,21 @@ function newGame() {
     Snake.reset();
     Food = makeValidFood(generateFood());
     SpecialFood = makeValidFood(generateFood());
-    timer = 5; // reset timer
-
-    score = 0; // reset score to 0
+    
+    // reset timer
+    timer = 5; 
+    
+    // reset score
+    score = 0; 
     document.getElementsByClassName("score")[0].innerText = "Score:" + " " + score;
+
+    // reset canvas border
+    document.getElementsByTagName("canvas")[0].style.border = "none";
+    document.getElementById("sketch-div").style.padding = "10px";
+
+    // reset stage
+    document.getElementsByClassName("info")[0].innerHTML = "1st Stage";
+    
     loop();
 }
 
