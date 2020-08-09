@@ -8,13 +8,13 @@
     <script src="sketch.js"></script>
     <script src="snake.js"></script>
     <script src="food.js"></script>
+    <script src="script.js"></script>
 
     <div class="scoreboard">
         <div class="score">Score: 0</div>
         <div class="highestScore">Highest Score: 0</div>
+        <div class="info">1st Stage</div>
     </div>
-    
-    <div class="info">1st Stage</div>
 
     <div class="container">
         <div class="gameName">🐍 The Snake Game</div>
@@ -29,9 +29,52 @@
             <button onclick="pauseGame()" id="pause">
                 <i class="material-icons noselect">pause</i>
             </button>
+            <button onclick="showRules()" id="info">
+                <i class="material-icons noselect">info</i>
+            </button>
+        </div>
+
+        <!-- modal -->
+        <div class="modal">
+            <div class="modal-content">
+                <button class="close" onclick="closeModal()">&times;</button>
+                <p>Welcome to 🐍 the Snake Game!</p>
+                <p> Your goal is to let the snake eat as many food as possible. <br>
+                    The snake can loop through the canvas, meaning if it went out of border,
+                    it will reappear at the opposite side.  
+                    Start the game by pressing <i class="material-icons noselect">play_arrow</i>.
+                </p>
+                <p>
+                    Each step the snake takes counts for <b>1</b> point. <br>
+                    Each food <i class="material-icons noselect" id="food">fiber_manual_record</i> 
+                    the snake eats counts for <b>100</b> points.
+                </p>
+                <p>
+                    Once you have reached <b>1500</b> points, you will enter the 2nd stage.
+                    Special food <i class="material-icons noselect" id="special_food">fiber_manual_record</i>
+                     will start to appear and change its position every <u><i>5 seconds</i></u>.
+                    Each special food <i class="material-icons noselect" id="special_food">fiber_manual_record</i>
+                     counts for <b>300</b> points instead!
+                </p>    
+                <p>
+                    The game will end if the snake eats itself. <br>
+                    To restart the game, press <i class="material-icons noselect">replay</i>.
+                    You can pause <i class="material-icons noselect">pause</i> the game at any time, 
+                    and simply press <i class="material-icons noselect">play_arrow</i> again to resume.
+                </p>
+                <p>
+                    Please note that your highest score will be lost after you refresh or close this browser.
+                </p>
+                <p>    
+                    Enjoy! :)
+                </p>
+            </div>
+        </div>
+
+        <div class="love">
+            Made with ❤️ by <a href="https://github.com/karen-poon/snake-game" target="_blank"> @karen-poon</a>
         </div>
     </div>
-
 
   </body>
 </html>

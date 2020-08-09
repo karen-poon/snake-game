@@ -36,8 +36,8 @@ function draw() {
         document.getElementsByClassName("score")[0].innerText = "Score:" + " " + score;
     }
 
-    // unlock special food once score reaches 1000
-    if (score > 1000) {
+    // unlock special food once score reaches 1500
+    if (score > 1500) {
         document.getElementsByTagName("canvas")[0].style.border = "solid 10px rgb(122, 173, 44)";
         document.getElementById("sketch-div").style.padding = "0px";
         document.getElementsByClassName("info")[0].innerHTML = "2nd Stage";

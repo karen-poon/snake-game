@@ -36,10 +36,10 @@ canvas {
 }
 
 .info {
-    position: fixed;
+    /* position: fixed;
     top: 100px;
     left: 15px;
-    padding: 10px;
+    padding: 10px; */
     font-size: 20px;
     color: red;
 }
@@ -52,8 +52,8 @@ canvas {
 }
 
 .gameName {
-    margin: 10px;
-    font-size: 26px;
+    margin: 15px 10px 5px;
+    font-size: 24px;
     align-items: center;
     justify-content: center;
     font-weight: bold;
@@ -75,7 +75,7 @@ canvas {
 
 .material-icons {
     color: black;
-    font-size: 30px !important;
+    font-size: 28px !important;
 }
 
 .button-list button:hover:enabled {
@@ -85,4 +85,83 @@ canvas {
 .button-list button:disabled {
     cursor: default;
     opacity: 30%;
+}
+
+.love {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: grey;
+    font-size: 14px;
+}
+
+.love a {
+    color: grey;
+    font-size: 14px;
+}
+
+.love a:hover {
+    color: rgb(56, 54, 54);
+}
+
+/***************** rules modal *****************/
+.modal .material-icons {
+    font-size: 14px !important;
+    vertical-align: middle;
+}
+
+#food {
+    color: rgb(255, 0, 100);
+}
+
+#special_food {
+    color: rgb(255, 255, 0);
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: relative;
+    color: rgb(80, 80, 80);
+    background-color: #fefefe;
+    max-width: 495px;
+    max-height: 500px;
+    margin: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+.modal-content p {
+    margin: 15px;
+}
+
+.close {
+    color: #aaaaaa;
+    background-color: transparent;
+    border: transparent;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    /* float: right; */
+    right: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    outline: none; /* no border when clicked */
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
