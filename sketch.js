@@ -2,6 +2,7 @@ const SCALE = 15;
 var Snake;
 var Food;
 var SpecialFood;
+var isFirstSpecialFood = true;
 var start = false;
 var score = 0;
 var highestScore = 0;
@@ -13,8 +14,8 @@ function setup() {
     frameRate(8);
     
     Snake = new Snake();
-    Food = makeValidFood(generateFood());
-    SpecialFood = makeValidFood(generateFood());
+    SpecialFood = createVector(-100, -100);
+    Food = makeValidFood(generateFood(), SpecialFood);
     
     document.getElementById("pause").style.display = "none";
 }
@@ -29,7 +30,7 @@ function draw() {
     // so that it works with my grow function
     if (Snake.isEat(Food)) {
         Snake.grow();
-        Food = makeValidFood(generateFood());
+        Food = makeValidFood(generateFood(), SpecialFood);
 
         // add 100 points for eating food 
         score += 100;
@@ -38,6 +39,10 @@ function draw() {
 
     // unlock special food once score reaches 1500
     if (score > 1500) {
+        if (isFirstSpecialFood) {
+            isFirstSpecialFood = false;
+            SpecialFood = makeValidFood(generateFood(), Food);
+        }
         document.getElementsByTagName("canvas")[0].style.border = "solid 10px rgb(122, 173, 44)";
         document.getElementById("sketch-div").style.padding = "0px";
         document.getElementsByClassName("info")[0].innerHTML = "2nd Stage";
@@ -52,13 +57,13 @@ function draw() {
         // reset timer and regenerate special food position
         if (frameCount % 10 == 0 && timer == 0) {
             timer = 5; // reset timer
-            SpecialFood = makeValidFood(generateFood()); // reset position
+            SpecialFood = makeValidFood(generateFood(), Food); // reset position
         }
         // when snake eats the speical food
         if (Snake.isEat(SpecialFood)) {
             Snake.grow();
             timer = 5; // reset timer
-            SpecialFood = makeValidFood(generateFood()); // reset position
+            SpecialFood = makeValidFood(generateFood(), Food); // reset position
 
             // add 300 points for eating special food 
             score += 300;

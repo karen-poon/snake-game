@@ -13,14 +13,20 @@ function generateFood() {
 
 // make sure the Food generated is valid
 // meaning it will NOT be generated at the snake's head or body
-function makeValidFood(food) {
+function makeValidFood(food, otherFood) {
     let validFood = false;
     do {
+        // if food generated at another food's position, regenerate it
+        if (food.equals(otherFood)) {
+            food = generateFood();
+            continue;
+        }
+        // if food generated at the snake's head, regenerate it
         if (food.equals(Snake.head)) {
             food = generateFood();
             continue;
         }
-
+        // if food generated at the snake's body, regenerate it
         var i;
         for (i = 0; i < Snake.body.length; i++) {
             if (food.equals(Snake.body[i])) {
@@ -28,6 +34,7 @@ function makeValidFood(food) {
                 break;
             }
         }
+        // only a valid food when it has looped through the whole snake body
         if (i == Snake.body.length) {
             validFood = true;
         }

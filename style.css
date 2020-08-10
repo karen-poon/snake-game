@@ -24,6 +24,7 @@ canvas {
 }
 
 .scoreboard {
+    width: 230px;
     position: fixed;
     top: 20px;
     left: 20px;
@@ -33,6 +34,7 @@ canvas {
     padding: 10px;
     font-size: 22px;
     line-height: 30px;
+    cursor: grab;
 }
 
 .info {
@@ -118,7 +120,7 @@ canvas {
 }
 
 .modal {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     position: fixed;
