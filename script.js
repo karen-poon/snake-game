@@ -46,7 +46,6 @@ function dragScoreboard() {
 
     // drags the scoreboard to a new position
     function elementDrag(e) {
-        document.getElementsByClassName("scoreboard")[0].style.cursor = "grabbing";
         e = e || window.event;
         e.preventDefault();
         // get the new cursor position
@@ -64,6 +63,5 @@ function dragScoreboard() {
     function stopDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
-        document.getElementsByClassName("scoreboard")[0].style.cursor = "grab";
     }
 }
