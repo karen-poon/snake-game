@@ -11,7 +11,7 @@ var timer = 5;
 function setup() {
     background(0);
     createCanvas(450, 450).parent('sketch-div'); // put under sketch div in html
-    frameRate(8);
+    frameRate(10);
     
     Snake = new Snake();
     SpecialFood = createVector(-100, -100);
@@ -38,7 +38,7 @@ function draw() {
     }
 
     // unlock special food once score reaches 1500
-    if (score > 1500) {
+    if (score > 2000) {
         if (isFirstSpecialFood) {
             isFirstSpecialFood = false;
             SpecialFood = makeValidFood(generateFood(), Food);
@@ -106,6 +106,7 @@ function startGame() {
     start = true;
     document.getElementById("play_arrow").style.display = "none";
     document.getElementById("pause").style.display = "inline-block";
+    loop();
 }
 
 // function for button "Pause Game"
@@ -113,6 +114,7 @@ function pauseGame() {
     start = false;
     document.getElementById("play_arrow").style.display = "inline-block";
     document.getElementById("pause").style.display = "none";
+    noLoop();
 }
 
 // function for button "Restart"
