@@ -34,7 +34,8 @@ canvas {
     padding: 10px;
     font-size: 22px;
     line-height: 30px;
-    cursor: grab;
+    cursor: all-scroll;
+    z-index: 1;
 }
 
 .info {
