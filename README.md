@@ -88,7 +88,8 @@ it means that 1 second has passed.
 So when the timer reaches 0, it regenerates special food's position and resets the timer.
 
 ### The Game 🕹️
-Player can control when to start, pause, or restart the game. They can control the snake using arrow keys on the keyboard too.
+Player can control when to start, pause, or restart the game. They can control the snake using arrow keys on the keyboard too 
+(Arrow keys won't initiate scrolling since I have disabled it).
 - `startGame()`: When the player clicks ▶️, the snake can start `travel()`ing. If the player clicks it after they paused the game, the game resumes.
 - `pauseGame()`: When the player clicks ⏸️, the snake stops `travel()`ing.
 - `newGame()`: When the player clicks 🔄, it resets the snake's position, food's position, score, and timer. 
